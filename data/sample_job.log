@@ -1,0 +1,24 @@
+[INFO] 2023-11-21 10:00:00 - System initialization complete.
+[INFO] 2023-11-21 10:00:01 - Loading dataset 'imagenet-1k'...
+[DEBUG] 2023-11-21 10:00:05 - Framework-internal setup message.
+[INFO] 2023-11-21 10:00:10 - Starting training job 'llm-pretrain-v2_run-123'
+[METRIC] 2023-11-21 10:01:00 - step=10, loss=2.302, lr=1e-4
+[METRIC] 2023-11-21 10:02:00 - step=20, loss=2.105, lr=1e-4
+[METRIC] 2023-11-21 10:03:00 - step=30, loss=1.987, lr=1e-4
+[DEBUG] 2023-11-21 10:03:15 - Memory allocation check passed.
+[METRIC] 2023-11-21 10:04:00 - step=40, loss=1.850, lr=1e-4
+[INFO] 2023-11-21 10:04:30 - Checkpointing model state to /path/to/checkpoints/step-40
+[METRIC] 2023-11-21 10:05:00 - step=50, loss=1.765, lr=1e-4
+[METRIC] 2023-11-21 10:06:00 - step=60, loss=1.876, lr=1e-4
+[INFO] 2023-11-21 10:07:00 - Job restarted from checkpoint step-40.
+[METRIC] 2023-11-21 10:08:00 - step=70, loss=1.654, lr=9e-5
+[METRIC] 2023-11-21 10:09:00 - step=80, loss=1.598, lr=9e-5
+[METRIC] 2023-11-21 10:10:00 - step=90, loss=1.512, lr=9e-5
+[METRIC] 2023-11-21 10:11:00 - step=100, loss=1.488, lr=9e-5
+[ERROR] 2023-11-21 10:11:05 - NCCL failure on rank 3, node-g7-b4.
+[ERROR] 2023-11-21 10:11:06 - Traceback (most recent call last):
+[ERROR] 2023-11-21 10:11:07 -   File "train.py", line 452, in main
+[ERROR] 2023-11-21 10:11:08 -     dist.all_reduce(tensor)
+[ERROR] 2023-11-21 10:11:09 - RuntimeError: NCCL error in: /opt/pytorch/pytorch/torch/lib/c10d/ProcessGroupNCCL.cpp:821, unhandled cuda error, NCCL version 2.7.8
+[ERROR] 2023-11-21 10:11:10 - ncclInternalError: Internal NCCL error, please report this issue to NVIDIA.
+[SYSTEM] 2023-11-21 10:11:11 - Job interrupted due to infrastructure failure.

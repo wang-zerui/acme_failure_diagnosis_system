@@ -1,0 +1,8 @@
+# requirements.txt
+langchain
+langchain-openai
+faiss-cpu
+pydantic
+tenacity
+langchain-community
+pyyaml
