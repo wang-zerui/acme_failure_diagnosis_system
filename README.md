@@ -2,15 +2,17 @@
 
 A LLM-powered tool for automated failure diagnosis and recovery in large-scale model training jobs.
 
+The system implements the following pipeline, which is presented in paper [Characterization of Large Language Model Development in the Datacenter](https://www.usenix.org/conference/nsdi24/presentation/hu):
+
+![workflow](assets/system.png)
+
 ## Features
 
 - **Real-time Log Processing**: Continuously monitors and processes training logs
 - **Intelligent Log Filtering**: Uses LLM-generated regex patterns to filter routine log messages
 - **Dual Diagnosis Approach**: Fast rule-based diagnosis with LLM fallback using RAG
 - **Continuous Learning**: System learns from new failures and improves over time
-- **Automatic Recovery**: Attempts automated recovery for recoverable failures
 - **Vector Storage**: Maintains historical failure context for better diagnosis
-- **YAML-Based Parsing**: Uses YAML format for more readable and flexible LLM output parsing
 
 ## Project Structure
 
@@ -56,6 +58,13 @@ Run the main simulation:
 python main.py
 ```
 
+Customization:
+
+- **Models**: Adjust model names in `config.py`
+- **Log Processing**: Modify chunk size and processing logic
+- **Recovery Actions**: Extend `RecoveryProcess` with actual recovery procedures
+- **Patterns**: Add domain-specific log patterns and error types
+
 ## How It Works
 
 ### 1. System Initialization
@@ -81,40 +90,6 @@ python main.py
 ### 5. Recovery Process (Not implemented yet)
 - Automatic recovery for recoverable failures
 - Manual intervention alerts for complex issues
-
-## Customization
-
-- **Models**: Adjust model names in `config.py`
-- **Log Processing**: Modify chunk size and processing logic
-- **Recovery Actions**: Extend `RecoveryProcess` with actual recovery procedures
-- **Patterns**: Add domain-specific log patterns and error types
-
-## YAML-Based Output Parsing
-
-The system uses YAML format for LLM output parsing, providing several advantages over JSON:
-
-- **More readable**: Cleaner, more human-friendly format
-- **Better regex support**: Easier handling of regex patterns with special characters
-- **Comments allowed**: LLMs can include explanatory comments
-- **Flexible quoting**: Single quotes, double quotes, or no quotes as appropriate
-
-Example YAML output from FailureAgent:
-```yaml
-root_cause: 'NCCL communication failure between training nodes'
-error_type: 'NCCLError'
-source: 'infrastructure_failure'
-is_recoverable: false
-mitigation: 'Restart training on healthy nodes after network diagnostics'
-new_rule_regex: 'NCCL error.*ncclInternalError'
-```
-
-Run `python demo_yaml.py` to see YAML parsing in action.
-
-## Architecture
-
-The system implements the following pipeline:
-
-![workflow](assets/system.png)
 
 ## Acknowledgments
 
